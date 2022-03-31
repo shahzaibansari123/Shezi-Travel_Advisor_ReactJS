@@ -11,21 +11,21 @@ import {
 import useStyles from "./styles";
 import PlaceDetails from "../PlaceDetails/PlaceDetails"
 
-export default function List() {
+export default function List({places}) {
   const classes = useStyles();
   const [Type, setType] = useState("restaurants");
   const [ratings, setRatings] = useState("");
-  const places=[
-    {name:'Cool Place'},
-    {name:'Best Steak'},
-    {name:'Best Beer'},
-    {name:'Cool Place'},
-    {name:'Best Steak'},
-    {name:'Best Beer'},
-    {name:'Cool Place'},
-    {name:'Best Steak'},
-    {name:'Best Beer'},
-  ]
+  // const places=[
+  //   {name:'Cool Place'},
+  //   {name:'Best Steak'},
+  //   {name:'Best Beer'},
+  //   {name:'Cool Place'},
+  //   {name:'Best Steak'},
+  //   {name:'Best Beer'},
+  //   {name:'Cool Place'},
+  //   {name:'Best Steak'},
+  //   {name:'Best Beer'},
+  // ]
   return (
     <div className={classes.container}>
       <Typography variant="h5">
