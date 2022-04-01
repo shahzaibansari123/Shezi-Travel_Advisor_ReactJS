@@ -10,7 +10,9 @@ export default function App() {
   const [places, setPlaces] = useState([]);
   // const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 }); ye default rkhne k lye hein cz jb apne cuurent location ki api use na ki v ho
   const [coordinates, setCoordinates] = useState({});
-  const [bounds, setBounds] = useState(null);
+  const [bounds, setBounds] = useState({});
+  const [childClicked, setChildClicked] = useState(null);
+  const [isLoading, setIsLoading]=useState(false);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -21,9 +23,11 @@ export default function App() {
   }, []);
   useEffect(() => {
     // console.log(bounds, coordinates);
+    setIsLoading(true)
     getPlacesData(bounds.sw, bounds.ne).then((data) => {
-      console.log(data);
+      // console.log(data);
       setPlaces(data);
+      setIsLoading(false);
     });
   }, [coordinates, bounds]);
   return (
@@ -32,13 +36,15 @@ export default function App() {
       <Header />
       <Grid container spacing={3} style={{ width: "100%" }}>
         <Grid item xs={12} md={4}>
-          <List places={places}/>
+          <List places={places} childClicked={childClicked} isLoading={isLoading} />
         </Grid>
         <Grid item xs={12} md={8}>
           <Map
             setCoordinates={setCoordinates}
             setBounds={setBounds}
             coordinates={coordinates}
+            places={places}
+            setChildClicked={setChildClicked}
           />
         </Grid>
       </Grid>
