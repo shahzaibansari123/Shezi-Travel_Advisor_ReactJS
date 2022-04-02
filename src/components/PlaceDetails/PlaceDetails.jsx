@@ -18,6 +18,7 @@ import useStyles from "./styles";
 export default function PlaceDetails({ place, selected, refProp }) {
   const classes = useStyles();
 
+  //scroolintoview is a built in mathod for html element
   if(selected) refProp?.current?.scrollIntoView({behavior: 'smooth' , block: "start"})
   return (
     <Card elevation={6}>
